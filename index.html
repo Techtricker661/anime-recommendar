@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniRec | Your Ultimate Anime Guide</title>
+    <meta name="description"
+        content="Discover your next favorite anime with AniRec. Personalized recommendations, trending titles, and comprehensive anime database.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                <span>Ani<span>Rec</span></span>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="animeQuery" placeholder="Search for an anime...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#genres">Genres</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1>Find Your Next <br><span class="highlight">Binge-Watch</span></h1>
+                <p>Personalized anime recommendations powered by your taste.</p>
+                <div class="hero-btns">
+                    <button class="btn btn-primary" onclick="scrollToSection('preference-section')">Get Personalized
+                        Recommendations</button>
+                    <button class="btn btn-secondary" onclick="getRandomAnime()">Surprise Me!</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="preference-section" class="container section">
+            <div class="preference-card">
+                <h2>Tell us your taste 🏮</h2>
+                <p>We'll find the perfect match based on what you love.</p>
+
+                <div class="pref-grid">
+                    <div class="pref-group">
+                        <label>What are you in the mood for?</label>
+                        <select id="moodGenre" class="pref-input">
+                            <option value="1">Action & Adrenaline</option>
+                            <option value="4">Comedy & Laughs</option>
+                            <option value="8">Deep Drama</option>
+                            <option value="10">Fantasy Worlds</option>
+                            <option value="22">Heartwarming Romance</option>
+                            <option value="36">Sci-Fi & Cyberpunk</option>
+                            <option value="37">Supernatural</option>
+                            <option value="41">Suspense/Thriller</option>
+                        </select>
+                    </div>
+
+                    <div class="pref-group">
+                        <label>Name an anime you loved earlier:</label>
+                        <div class="search-input-wrapper">
+                            <input type="text" id="watchedEarlier" class="pref-input"
+                                placeholder="e.g. Naruto, Spirited Away...">
+                            <div id="watchedSuggestions" class="suggestions-list hidden"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary full-width" onclick="getPersonalizedRecs()">Find My Match</button>
+            </div>
+        </section>
+
+        <section id="trending" class="container section">
+            <div class="section-header">
+                <h2>Trending Anime</h2>
+                <div class="scroll-btns">
+                    <button class="scroll-btn" onclick="scrollGrid('trendingGrid', -1)"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button class="scroll-btn" onclick="scrollGrid('trendingGrid', 1)"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div id="trendingGrid" class="anime-grid">
+                <!-- Data will be loaded here -->
+            </div>
+        </section>
+
+        <section id="genres" class="container section">
+            <div class="section-header">
+                <h2>Popular Genres</h2>
+            </div>
+            <div class="genre-list">
+                <button class="genre-chip active" data-genre="all">All</button>
+                <button class="genre-chip" data-genre="1">Action</button>
+                <button class="genre-chip" data-genre="2">Adventure</button>
+                <button class="genre-chip" data-genre="4">Comedy</button>
+                <button class="genre-chip" data-genre="8">Drama</button>
+                <button class="genre-chip" data-genre="10">Fantasy</button>
+                <button class="genre-chip" data-genre="22">Romance</button>
+                <button class="genre-chip" data-genre="36">Sci-Fi</button>
+            </div>
+            <div id="genreGrid" class="anime-grid">
+                <!-- Data will be loaded here -->
+            </div>
+        </section>
+
+        <section id="recommendations" class="container section hidden">
+            <div class="section-header">
+                <h2>Recommended for You</h2>
+            </div>
+            <div id="recomGrid" class="anime-grid">
+                <!-- Data will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-play-circle"></i>
+                <span>Ani<span>Rec</span></span>
+            </div>
+            <p>&copy; 2026 AniRec. Data provided by Jikan API.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Anime Details -->
+    <div id="animeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
